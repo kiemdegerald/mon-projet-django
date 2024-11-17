@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div>
+            <img src="{{produits.image.url}}" width="500px" height="500px" alt="" >
+        </div>
+    </div>
+        <div class="col-md-6">
+            <div class="text-warning display-3">{{ produits.nom }}</div>
+            <div class="text-danger">prix: {{ produits.prix }}</div>
+            <div>description: {{ produits.description }}</div>
+            <div class="display-3">
+                <a href="" class=" btn btn-success btn-sm">Acheter</a>
+                <a class=" btn btn-primary btn-sm" href="{% url 'index' %}">acceuil</a>
+            </div>
+            
+        </div>
+        
+</div>
+{% endblock %}
+
+

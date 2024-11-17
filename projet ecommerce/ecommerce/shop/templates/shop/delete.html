@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer un Produit</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white text-center">
+                        <h2>Supprimer le Produit</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if message %}
+                        <div class="alert alert-success text-center">{{ message }}</div>
+                        {% else %}
+                        <div class="text-center">
+                            <h5>Êtes-vous sûr de vouloir supprimer ce produit ?</h5>
+                            <h2><strong>{{ produits.nom }}</strong></h2>
+                            <p>Prix : {{ produits.prix }} FCFA</p>
+                            <img src="{{ produits.image.url }}" alt="{{ produits.nom }}" class="img-thumbnail"
+                                style="width: 150px;">
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-lg btn-sm">Supprimer</button>
+                                <a href="{% url 'table' %}" class="btn btn-secondary btn-lg btn-sm">Annuler</a>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

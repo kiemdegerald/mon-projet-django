@@ -1,0 +1,19 @@
+ .button {
+     padding: 7px 20px;
+     border-radius: 5px;
+     font-weight: bold;
+     text-align: center;
+     color: white;
+ }
+
+ .red {
+     background-color: red;
+ }
+
+ .green {
+     background-color: green;
+ }
+
+ .orange {
+     background-color: orange;
+ }

@@ -1,0 +1,66 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Ajouter un Nouveau Produit</h2>
+                    </div>
+                    <div class="card-body">
+                        {% for messe in messages %}
+                        <div class="alert alert-success text-center">{{ messe }}</div>
+                        {% endfor %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_nom">Nom du Produit</label>
+                                <input type="text" name="nom" class="form-control"
+                                    placeholder="Entrez le nom du produit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_prix">Prix</label>
+                                <input type="number" name="prix" class="form-control"
+                                    placeholder="Entrez le prix du produit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_description">Description</label>
+                                <textarea name="description" class="form-control" rows="4"
+                                    placeholder="Entrez une description détaillée" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_categorie">Catégorie</label>
+                                <select name="categorie" class="form-control" required>
+                                    <!-- Les options des catégories seront générées dynamiquement -->
+                                        {% for categorie in categories %}
+                                            <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
+                                        {% endfor %}
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_image">Image du Produit</label>
+                                <input type="file" name="image" class="form-control-file" required>
+                            </div>
+                            <!-- pour la quantité en stock -->
+                            <div class="form-group">
+                                <label for="id_quantite_en_stock">Quantité en stock</label>
+                                <input type="number" name="quantite_en_stock" class="form-control"
+                                    placeholder="Entrez la quantité en stock" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-lg">Ajouter le Produit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <!-- Bootstrap JS -->
+     {% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    {% endblock %}
